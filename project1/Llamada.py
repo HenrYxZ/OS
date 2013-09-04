@@ -2,10 +2,12 @@ import Proceso
 
 class Llamada(Proceso.Proceso):
 
-    def __init__(self,nombre,tiempo,numero,duracion):
+    def __init__(self,nombre,fecha,tipo_proceso,prioridad,numero,duracion):
         self.id = id
         self.name = nombre
-        self.time = tiempo
+        self.date = fecha
+    	self.tipo = tipo_proceso
+    	self.priority = prioridad
         self.number = numero
         self.length = duracion
 
