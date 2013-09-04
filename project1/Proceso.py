@@ -16,7 +16,7 @@ class Proceso:
     def getTipo(self):
         return self.tipo
         
-    def getPriotiry(self):
+    def getPriority(self):
         return self.priority
         
     def getId(self):
