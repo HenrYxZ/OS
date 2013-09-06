@@ -6,9 +6,10 @@ class ProcesoCualquiera(Proceso.Proceso):
 		self.id = id
 		self.name = nombre
 		self.date = fecha
-		self.tipo = tipo_proceso
+		self.type = tipo_proceso
 		self.priority = prioridad
 		self.length = duracion
+		self.state = "new"
 
 	def getLength(self):
 		return self.length

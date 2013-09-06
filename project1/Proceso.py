@@ -4,8 +4,9 @@ class Proceso:
         self.id = id
         self.name = nombre
         self.date = fecha
-        self.tipo = tipo_proceso
+        self.type = tipo_proceso
         self.priority = prioridad
+        self.state = "new"
 
     def getName(self):
         return self.name
@@ -13,12 +14,15 @@ class Proceso:
     def getDate(self):
         return self.date
 
-    def getTipo(self):
-        return self.tipo
+    def getType(self):
+        return self.type
         
     def getPriority(self):
         return self.priority
         
     def getId(self):
         return self.id
+
+    def getState(self):
+        return self.state
         
