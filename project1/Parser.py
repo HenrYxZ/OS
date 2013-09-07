@@ -70,70 +70,67 @@ class Parser:
 
 
 
-def llamadas(self,n,f,t,pri,op):
-    #Metodo para inicializar recepcion y envio de llamadas
+    def llamadas(self,n,f,t,pri,op):
+        #Metodo para inicializar recepcion y envio de llamadas
 
-    index = op.find(';')
+        index = op.find(';')
 
-    #obtenemos los parametros
-    num_telefono = op[0:index]
-    t_ejec = op[index+1:]
-    #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+        #obtenemos los parametros
+        num_telefono = op[0:index]
+        t_ejec = op[index+1:]
+        #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-    if t == 1:
-        proceso_realizado = Proceso("env_llamada", n,f,t,pri)
-    elif t == 2:
-        proceso_realizado = Proceso("recep_llamada", n,f,t,pri)
+        if t == 1:
+            proceso_realizado = Proceso("env_llamada", n,f,t,pri)
+        elif t == 2:
+            proceso_realizado = Proceso("recep_llamada", n,f,t,pri)
 
-    return proceso_realizado
+        return proceso_realizado
 
-def mensajes(self,n,f,t,pri,op):
-    #Metodo para incializar recepcion y envio de mensajes
+    def mensajes(self,n,f,t,pri,op):
+        #Metodo para incializar recepcion y envio de mensajes
 
-    index = op.find(';')
+        index = op.find(';')
 
-    #obtenemos los parametros
-    receptor = op[0:index]
-    texto_enviado = op[index+1:]
-    #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+        #obtenemos los parametros
+        receptor = op[0:index]
+        texto_enviado = op[index+1:]
+        #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-    if t == 3:
-        proceso_realizado = Proceso("env_mensaje", n,f,t,pri)
-    elif t == 4:
-        proceso_realizado = Proceso("recep_mensaje", n,f,t,pri)
+        if t == 3:
+            proceso_realizado = Proceso("env_mensaje", n,f,t,pri)
+        elif t == 4:
+            proceso_realizado = Proceso("recep_mensaje", n,f,t,pri)
 
-    return proceso_realizado
+        return proceso_realizado
 
-def add_contact(self,n,f,t,pri,op):
-    #metodo para agregar un contacto
+    def add_contact(self,n,f,t,pri,op):
+        #metodo para agregar un contacto
 
-    index = op.find(';')
+        index = op.find(';')
 
-    #obtenemos los parametros
-    nombre_agregado = op[0:index]
-    numero_agregado = op[index+1:]
-    #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+        #obtenemos los parametros
+        nombre_agregado = op[0:index]
+        numero_agregado = op[index+1:]
+        #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-    proceso_realizado = Proceso("add_cont",n,f,t,pri)
+        proceso_realizado = Proceso("add_cont",n,f,t,pri)
 
-    return proceso_realizado 
+        return proceso_realizado 
 
-def procesos_cualquiera(self,n,f,t,pri,tiempo_duracion):
-    #Este metodo inicializa los tipos de proceso 6,7,8,9 y 10
+    def procesos_cualquiera(self,n,f,t,pri,tiempo_duracion):
+        #Este metodo inicializa los tipos de proceso 6,7,8,9 y 10
 
-    #if t == 6:
-    #   proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
+        #if t == 6:
+        #   proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
 
-    #elif t == 7:
+        #elif t == 7:
 
-    #elif t == 8:
+        #elif t == 8:
 
-    #elif t == 9:
+        #elif t == 9:
 
-    #elif t == 10:
+        #elif t == 10:
 
-    proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
-    return proceso_realizado
-
-
-
+        proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
+        return proceso_realizado
