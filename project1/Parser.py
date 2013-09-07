@@ -18,6 +18,8 @@ class Parser:
     def Leer_Archivo(self):
         archivo = open(self.n_archivo,"r") #abrimos el archivo que queremos
         
+        #ACA CREO LA COLA.... cola_mnivel = Cola(.........)
+
         while True:
             linea = archivo.readline() #leemos las lineas
             if not linea:
@@ -45,25 +47,24 @@ class Parser:
 
                 #ahora que tenemos todos los atributos, vemos los casos
 
-                if tipo_proceso == 1:
+                if tipo_proceso == 1 or tipo_proceso == 2:
 
-                elif tipo_proceso == 2:
+                    proceso_retornado = llamadas(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
+                    #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
 
-                elif tipo_proceso == 3:
+                elif tipo_proceso == 3 or tipo_proceso == 4:
 
-                elif tipo_proceso == 4:
+                    proceso_retornado = mensajes(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
+                    #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
 
                 elif tipo_proceso == 5:
 
-                elif tipo_proceso == 6:
+                    proceso_retornado = add_contact(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
+                    #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
 
-                elif tipo_proceso == 7:
-
-                elif tipo_proceso == 8:
-
-                elif tipo_proceso == 9:    
-                
-                elif tipo_proceso == 10:
+                else:
+                    proceso_retornado = procesos_cualquiera(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
+                    #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
 
 
         archivo.close() #Finalmente cerramos el archivo
@@ -134,3 +135,4 @@ class Parser:
 
         proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
         return proceso_realizado
+
