@@ -16,13 +16,28 @@ class Parser:
             if not linea:
                 break
             else:
-                indice = linea.find(';') #Obtenemos el indice de la primera coma
+                indice = linea.find(',') #Obtenemos el indice de la primera coma
                 nombre = linea[0:indice] #Nombre del proceso
-                print nombre;
-                print indice;
-            
-            
-        archivo.close() #Finalmente cerramos el archivo
+                
+                linea = linea[indice+1:] #Actualizamos la linea
+                #obtendremos ahora la fecha de ejecucion
+                indice = linea.find(',')
+                fecha_ejec = linea[0:indice]
 
-Par = Parser("prueba.txt")
-Par.Leer_Archivo()
+                linea = linea[indice+1:] #Actualizamos la linea
+                #obtendremos ahora el tipo de proceso
+                indice = linea.find(',')
+                tipo_proceso = linea[0:indice]
+            
+                linea = linea[indice+1:] #Actualizamos la linea
+                #obtendremos ahora la prioridad base
+                indice = linea.find(',')
+                prioridad_base = linea[0:indice]
+            
+                opciones = linea[indice+1:] #Obtenemos las opciones
+                
+
+                #ahora que tenemos todos los atributos, vemos los casos, los cuales son 10
+
+
+        archivo.close() #Finalmente cerramos el archivo
