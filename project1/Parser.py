@@ -79,12 +79,8 @@ class Parser:
         #obtenemos los parametros
         num_telefono = op[0:index]
         t_ejec = op[index+1:]
-        #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-
-        if t == 1:
-            proceso_realizado = Proceso("env_llamada", n,f,t,pri)
-        elif t == 2:
-            proceso_realizado = Proceso("recep_llamada", n,f,t,pri)
+        
+        proceso_realizado = Llamada(n,f,t,pri,num_telefono,t_ejec)
 
         return proceso_realizado
 
@@ -96,13 +92,9 @@ class Parser:
         #obtenemos los parametros
         receptor = op[0:index]
         texto_enviado = op[index+1:]
-        #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-        if t == 3:
-            proceso_realizado = Proceso("env_mensaje", n,f,t,pri)
-        elif t == 4:
-            proceso_realizado = Proceso("recep_mensaje", n,f,t,pri)
-
+        proceso_realizado = Proceso(n,f,t,pri,receptor,texto_enviado)
+        
         return proceso_realizado
 
     def add_contact(self,n,f,t,pri,op):
@@ -115,7 +107,7 @@ class Parser:
         numero_agregado = op[index+1:]
         #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-        proceso_realizado = Proceso("add_cont",n,f,t,pri)
+        proceso_realizado = Proceso(n,f,t,pri,nombre_agregado,numero_agregado)
 
         return proceso_realizado 
 
