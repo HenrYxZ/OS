@@ -80,7 +80,7 @@ class Parser:
         num_telefono = op[0:index]
         t_ejec = op[index+1:]
         
-        proceso_realizado = Llamada(n,f,t,pri,num_telefono,t_ejec)
+        proceso_realizado = Llamada.Llamada(n,f,t,pri,num_telefono,t_ejec)
 
         return proceso_realizado
 
@@ -93,7 +93,7 @@ class Parser:
         receptor = op[0:index]
         texto_enviado = op[index+1:]
 
-        proceso_realizado = Proceso(n,f,t,pri,receptor,texto_enviado)
+        proceso_realizado = Mensaje.Mensaje(n,f,t,pri,receptor,texto_enviado)
         
         return proceso_realizado
 
@@ -107,7 +107,7 @@ class Parser:
         numero_agregado = op[index+1:]
         #FALTA AGREGAR ESTOS PARAMETROS A LOS PROCESOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
 
-        proceso_realizado = Proceso(n,f,t,pri,nombre_agregado,numero_agregado)
+        proceso_realizado = Agenda.Agenda(n,f,t,pri,nombre_agregado,numero_agregado)
 
         return proceso_realizado 
 
@@ -125,6 +125,6 @@ class Parser:
 
         #elif t == 10:
 
-        proceso_realizado = ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
+        proceso_realizado = ProcesoCualquiera.ProcesoCualquiera(n,f,t,pri,tiempo_duracion)
         return proceso_realizado
 
