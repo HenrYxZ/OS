@@ -11,6 +11,15 @@ class Scheduler:
 	def __init__(self, cola):
 		self.queue = cola
 		self.process_in_cpu = None
+		# Todas las listas siguientes son de threads.
+		# esta lista almacenara los procesos de llamadas
+		self.llamadas = []
+		# esta lista almacenara los procesos de mensajes
+		self.mensajes = []
+		#esta lista almacenara los demas procesos
+		self.otros = []
+		#proceso actual
+		self.actual = None
 
 	def run_in_cpu(self, proceso):
 		""" Esta funcion toma un proceso como argumento y lo deja corriendo en 
@@ -34,7 +43,14 @@ class Scheduler:
 				# Llamado a la funcion guardar que debe estar descrita en el
 				# modulo (.py) memoria
 				Memoria.guardar(process_in_cpu)
-				queue.push(process_in_cpu)
+				# Agregar el proceso a una cola en que espere
+				if process_in_cpu.getType() == "Llamada":
+					self.llamadas.append(process_in_cpu)
+				elif process_in_cpu.getType() == "Mensaje":
+					self.mensajes.append(process_in_cpu)
+				else 
+					self.otros.append(process_in_cpu)
+				# queue.push(process_in_cpu)
 			proceso = queue.pull()
 			run_in_cpu(proceso)
 			time.sleep(proceso.getLength())
