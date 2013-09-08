@@ -19,6 +19,7 @@ class Parser:
         archivo = open(self.n_archivo,"r") #abrimos el archivo que queremos
         
         #ACA CREO LA COLA.... cola_mnivel = Cola(.........)
+        lista = []
 
         while True:
             linea = archivo.readline() #leemos las lineas
@@ -51,6 +52,7 @@ class Parser:
 
                     proceso_retornado = llamadas(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
                     #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
+                    
 
                 elif tipo_proceso == 3 or tipo_proceso == 4:
 
@@ -65,9 +67,10 @@ class Parser:
                 else:
                     proceso_retornado = procesos_cualquiera(nombre,fecha_ejec,tipo_proceso,prioridad_base,opciones)
                     #ACA agrego el proceso a la COLA del modo....   cola_mnivel.push(proceso_retornado)
-
+                lista.append(proceso_retornado)
 
         archivo.close() #Finalmente cerramos el archivo
+        return lista
 
 
 
