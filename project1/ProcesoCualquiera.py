@@ -13,4 +13,6 @@ class ProcesoCualquiera(Proceso.Proceso):
 
 	def getLength(self):
 		return self.length
-		
+
+	def run(self):
+		print ("Proceso %s id=%d corriendo, falta %d" % self.name, self.id,self.length)

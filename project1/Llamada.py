@@ -16,3 +16,7 @@ class Llamada(Proceso.Proceso):
 
     def getLength(self):
         return self.length
+
+    def run(self):
+        texto = ("Proceso %s id=%d corriendo, falta %d" % self.name, self.id,self.length)
+        print texto

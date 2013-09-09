@@ -8,6 +8,7 @@ class Proceso:
         self.priority = prioridad
         self.state = "new"
 
+
     def getName(self):
         return self.name
 

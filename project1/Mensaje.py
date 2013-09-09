@@ -16,3 +16,7 @@ class Mensaje(Proceso.Proceso):
 
     def getText(self):
         return self.text
+
+    def run(self):
+        texto = ("Proceso %s id=%d corriendo, falta %d" % self.name, self.id,self.length)
+        print texto
