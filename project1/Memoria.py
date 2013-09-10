@@ -5,7 +5,7 @@
 	""" Se debe hacer un "switch" para los 10 tipos de procesos que se guardando
  	de forma distinta en un archivo con el mismo nombre que el proceso """
  	
- import Proceso
+import Proceso
 import os.path
 import Llamada
 import Agenda
