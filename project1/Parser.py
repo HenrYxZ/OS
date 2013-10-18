@@ -97,7 +97,7 @@ class Parser:
         texto_enviado = op[index+1:]
 
         proceso_realizado = Mensaje.Mensaje(n,f,t,pri,receptor,texto_enviado)
-        
+        print "tiempo_duracion mensaje" + str(proceso_realizado.getLength())
         return proceso_realizado
 
 
@@ -113,5 +113,6 @@ class Parser:
 
     def procesos_cualquiera(self,n,f,t,pri,tiempo_duracion):
         proceso_realizado = ProcesoCualquiera.ProcesoCualquiera(n,f,t,pri, int(tiempo_duracion))
+        print "tiempo_duracion" + tiempo_duracion + "num"
         return proceso_realizado
 
