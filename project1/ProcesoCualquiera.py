@@ -16,3 +16,7 @@ class ProcesoCualquiera(Proceso.Proceso):
 
 	def run(self):
 		print ("Proceso %s id=%d corriendo, falta %d" % self.name, self.id,self.length)
+
+	def run(self):
+		texto = ("Proceso " + self.name +  " corriendo, falta " + str(self.length))
+		return texto	

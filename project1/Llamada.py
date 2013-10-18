@@ -6,7 +6,7 @@ class Llamada(Proceso.Proceso):
         self.id = id
         self.name = nombre
         self.date = fecha
-    	self.tipo = tipo_proceso
+    	self.type = tipo_proceso
     	self.priority = prioridad
         self.number = numero
         self.length = duracion
@@ -18,5 +18,5 @@ class Llamada(Proceso.Proceso):
         return self.length
 
     def run(self):
-        texto = ("Proceso %s id=%d corriendo, falta %d" % self.name, self.id,self.length)
+        texto = ("Proceso " + self.name +  " corriendo, falta " + str(self.length))
         print texto

@@ -6,7 +6,7 @@ class Mensaje(Proceso.Proceso):
         self.id = id
         self.name = nombre
         self.date = fecha
-    	self.tipo = tipo_proceso
+    	self.type = tipo_proceso
     	self.priority = prioridad
         self.number = numero
         self.text = texto
