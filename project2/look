@@ -1,0 +1,46 @@
+class planificador:
+	
+	__direccion = True #ascendente = t, descendente = f
+	__cabezal = 1
+	__min = 1
+	__max = 800
+	
+	def minMax(lista):
+	i = 0
+	__min = 801
+	__max = -1
+	
+	while i < len(lista):
+		if lista[i] < __min:
+			__min = lista[i]
+		if lista[i] > __max:
+			__max = lista[i]
+		i = i+1
+	
+	def buscar(lista):
+	
+		atendidos = []
+		
+		minMax(lista)
+		
+		while len(lista) > 0:
+			
+			if cabezal in lista:
+				atendidos.append(cabezal)
+				lista.remove(cabezal)
+			
+			if direction:
+				
+				cabezal = cabezal + 1
+				if cabezal == __max + 1:
+					minMax(lista)
+					direction = False
+					cabezal = cabezal - 2
+			else:
+				
+				cabezal = cabezal - 1
+				if cabezal == __min -1:
+					minMax(lista)
+					direction = True
+					cabezal = cabezal + 2
+		return atendidos
