@@ -6,41 +6,41 @@ class planificador:
 	__max = 800
 	
 	def minMax(lista):
-	i = 0
-	__min = 801
-	__max = -1
-	
-	while i < len(lista):
-		if lista[i] < __min:
-			__min = lista[i]
-		if lista[i] > __max:
-			__max = lista[i]
-		i = i+1
+		i = 0
+		self.__min = 801
+		self.__max = -1
+		
+		while i < len(lista):
+			if lista[i] < self.__min:
+				self.__min = lista[i]
+			if lista[i] > self.__max:
+				self.__max = lista[i]
+			i = i+1
 	
 	def buscar(lista):
 	
 		atendidos = []
 		
-		minMax(lista)
+		self.minMax(lista)
 		
 		while len(lista) > 0:
 			
-			if cabezal in lista:
-				atendidos.append(cabezal)
-				lista.remove(cabezal)
+			if self.__cabezal in lista:
+				atendidos.append(self.__cabezal)
+				lista.remove(self.__cabezal)
 			
-			if direction:
+			if self.__direction:
 				
-				cabezal = cabezal + 1
-				if cabezal == __max + 1:
-					minMax(lista)
-					direction = False
-					cabezal = cabezal - 2
+				self.__cabezal = self.__cabezal + 1
+				if self.__cabezal == self.__max + 1:
+					self.minMax(lista)
+					self.__direction = False
+					self.__cabezal = self.__cabezal - 2
 			else:
 				
-				cabezal = cabezal - 1
-				if cabezal == __min -1:
-					minMax(lista)
-					direction = True
-					cabezal = cabezal + 2
+				self.__cabezal = self.__cabezal - 1
+				if self.__cabezal == self.__min -1:
+					self.minMax(lista)
+					self.__direction = True
+					self.__cabezal = self.__cabezal + 2
 		return atendidos
