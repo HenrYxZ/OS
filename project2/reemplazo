@@ -8,11 +8,11 @@ def reemplazar(lista,bloques)
 	
 	while i<len(lista):
 		
-		if not dentro and lista[i] == 0:
+		if not dentro and lista[i][0] == 0:
 		
 			ceros.append(i)
 		
-		if dentro and lista[i] != 0:
+		if dentro and lista[i][0] != 0:
 		
 			dentro = False
 		
@@ -55,19 +55,19 @@ def reemplazar(lista,bloques)
 	
 		if maxSpace = -1:
 			
-			actualBlock = lista[0]
-			borrar.append(lista[0])
+			actualBlock = lista[0][0]
+			borrar.append(lista[0][0])
 			
 			i = 0
 			
 			while True:
 				
-				if lista[i] != actualBlock:
+				if lista[i][0] != actualBlock:
 					if space >= bloques:
 						break
 					else:
-						actualBlock = lista[i]
-						borrar.append(lista[i])
+						actualBlock = lista[i][0]
+						borrar.append(lista[i][0])
 						
 				space = space +1
 				i = i + 1
@@ -76,17 +76,17 @@ def reemplazar(lista,bloques)
 		
 			i = ceros[maxSpace] + 1
 			
-			actualBlock = lista[i]
-			borrar.append(lista[i])
+			actualBlock = lista[i][0]
+			borrar.append(lista[i][0])
 			
 			while True:
 				
-				if lista[i] != actualBlock:
+				if lista[i][0] != actualBlock:
 					if space >= bloques:
 						break
 					else:
-						actualBlock = lista[i]
-						borrar.append(lista[i])
+						actualBlock = lista[i][0]
+						borrar.append(lista[i][0])
 				space = space +1
 				i = i + 1
 		
@@ -94,7 +94,7 @@ def reemplazar(lista,bloques)
 		
 			i = ceros[maxSpace]-1
 			
-			actualBlock = lista[i]
+			actualBlock = lista[i][0]
 			blockIzq = 0
 			blockDer = 0
 			contadorIzq = 0
@@ -116,7 +116,7 @@ def reemplazar(lista,bloques)
 					enter = True
 					
 				if i >= 0 and i < len(lista) or enter:
-					if enter or lista[i] != actualBlock:
+					if enter or lista[i][0] != actualBlock:
 						
 						enter = False
 						if dir:
@@ -127,9 +127,9 @@ def reemplazar(lista,bloques)
 							if not cancelIzq:
 								dir = False
 								i = lastIzq
-								actualBlock = lista[i]
+								actualBlock = lista[i][0]
 							else:
-								actualBlock = lista[i]
+								actualBlock = lista[i][0]
 						else:
 							blockIzq = actualBlock
 							contadorIzq = actualC
@@ -138,9 +138,9 @@ def reemplazar(lista,bloques)
 							if not cancelDer:
 								dir = True
 								i = lastDer
-								actualBlock = lista[i]
+								actualBlock = lista[i][0]
 							else:
-								actualBlock = lista[i]
+								actualBlock = lista[i][0]
 						
 						if contadorDer != 0 && contadorIzq != 0:
 						
@@ -217,4 +217,5 @@ def reemplazar(lista,bloques)
 							
 							
 	return borrar					
+											
 					
