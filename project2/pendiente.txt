@@ -1,0 +1,3 @@
+Scheduler:
+
+- Falta ver cómo hacer que corra constantemente y que pueda tomar los eventos que vengan y hacer round robin cuando no.

@@ -13,7 +13,7 @@ class Mensaje(Proceso.Proceso):
         self.number = numero
         self.text = texto
         # Se resta 1 a len porque se cuenta el caracter de fin de linea
-        self.length = tiempo_por_caracter * len(texto)
+        self.length = tiempo_por_caracter * len(texto)-1
 
     def getNumber(self):
         return self.number
