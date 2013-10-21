@@ -14,7 +14,7 @@ class Ram():
 
 
 
-	def agregar_archivo(self,cant_bloques, indice_archivo, nombre_archivo):
+	def agregar_archivo(self,cant_bloques, nombre_archivo):
 		## recibo la cantidad de bloques que utilizare de la ram y el archivo que deseo guardar
 		bloques = [] ## variable que guardara cada bloque de 1024 bytes (a excepcion del ultimo)
 		self.nombres_archivos.append(nombres_archivos)

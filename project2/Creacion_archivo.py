@@ -19,7 +19,7 @@ class Creacion_archivo(object):
 
 			##metemos bloques a ram
 
-			return True
+			return True, numero_bloques
 
 
 
