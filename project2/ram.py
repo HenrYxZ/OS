@@ -20,6 +20,7 @@ class Ram():
 		self.nombres_archivos.append(nombres_archivos)
 		cantidad_archivos += 1 
 
+		posicion_bloques_en_RAM = []
 
 		f = open(nombre_archivo) # abrimos para leer el archivo falta poner DIRECCION
 
@@ -51,7 +52,7 @@ class Ram():
 			for j in range(0,20):
 				if self.bloques_memoria[x][0] == 0 and bloques_copiados < cant_bloques:
 					self.bloques_memoria.insert(x , [indice_archivo, contador_bloques]) #guardo indice, y offset de pedazo de archivo
-
+					posicion_bloques_en_RAM.append(i)
 					bloque_abierto_ram = open("ram/"+str(i)+".txt","w") #abro el archivo que quiero
 
 					bloque_abierto_ram.write(bloques[contador_bloques]) ##escribo el pedazo de archivo que quiero escribir
@@ -72,7 +73,7 @@ class Ram():
 			for x in xrange(0,20):
 				if self.bloques_memoria[x][0] == 0 and bloques_copiados < cant_bloques:
 					self.bloques_memoria.insert(x , [indice_archivo, contador_bloques]) #guardo indice, y offset de pedazo de archivo
-
+					posicion_bloques_en_RAM.append(x)
 					bloque_abierto_ram = open("ram/"+str(x)+".txt","w") #abro el archivo que quiero
 
 					bloque_abierto_ram.write(bloques[contador_bloques]) ##escribo el pedazo de archivo que quiero escribir
@@ -87,6 +88,7 @@ class Ram():
 					break
 
 		f.close()
+		return posicion_bloques_en_RAM
 
 
 	def leer_archivo(self,name_archivo):
@@ -105,11 +107,26 @@ class Ram():
 				##aca debo obtener todo los bloques tales que bloques_memoria[x,0] == posicion.
 				partes = []
 				for i in range(0,20):
-					if bloques_memoria[i,0] == posicion
-						partes.append(bloques_memoria[i], i)
+					if bloques_memoria[i][0] == posicion
+						partes.append([i,bloques_memoria[i][1]])
 				##Al obtener todos los bloques, debo ordenarlos segun el segundo parametros de bloques_memoria
 				
 				partes = sorted(partes, key = lambda student: student[1]) ##metodo para ordenar
 
 				# es decir segun bloques_memoria[x,1]... luego los imprimo en consola y los muestro
+				## Ahora simplemente leo los archivo de nombre (i).txt de partes y los imprimo
+
+				for j in range(0:len(partes)):
+					f = open("ram/"+partes[j][0]+".txt")
+					dato = f.read()
+					print dato
+					f.close()
+
+			else:
+				#si no lo encuentro, el disco los debe copiar en la RAM y luego debo leerlos
+				##FALTA METODO DE DISCO DURO
+
+
+
+
 
