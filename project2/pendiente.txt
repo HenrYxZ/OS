@@ -4,7 +4,7 @@
 - Hacer "disco" de 500 archivos
 - Hacer funcion que restrinja estos a 500 bytes(500 caracteres)
 
-- Hacer inodo
+- Hacer inodo (Hernaldo)
 	- Metadatos
 	- Sistema de direcciones directas e indirectas
 	- Uso de bloques
