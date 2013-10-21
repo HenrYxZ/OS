@@ -1,4 +1,4 @@
-class Ram():
+class ram():
 
 	def __init__(self):
 		## VER SI NECESITO CONSTRUCTOR
@@ -8,9 +8,8 @@ class Ram():
 		self.cantidad_archivos = 0
 		self.nombres_archivos = []
 		self.nombres_archivos.append(None) ## LOS NOMBRES VAN DEL INDICE 1 EN ADELANTE
-
 		for x in xrange(0,20):
-			bloques_memoria.append(0)
+			self.bloques_memoria.append(0)
 
 
 
@@ -107,7 +106,7 @@ class Ram():
 				##aca debo obtener todo los bloques tales que bloques_memoria[x,0] == posicion.
 				partes = []
 				for i in range(0,20):
-					if bloques_memoria[i][0] == posicion
+					if bloques_memoria[i][0] == posicion:
 						partes.append([i,bloques_memoria[i][1]])
 				##Al obtener todos los bloques, debo ordenarlos segun el segundo parametros de bloques_memoria
 				
@@ -116,13 +115,13 @@ class Ram():
 				# es decir segun bloques_memoria[x,1]... luego los imprimo en consola y los muestro
 				## Ahora simplemente leo los archivo de nombre (i).txt de partes y los imprimo
 
-				for j in range(0:len(partes)):
+				for j in range(0,len(partes)):
 					f = open("ram/"+partes[j][0]+".txt")
 					dato = f.read()
 					print dato
 					f.close()
 
-			else:
+			##else:
 				#si no lo encuentro, el disco los debe copiar en la RAM y luego debo leerlos
 				##FALTA METODO DE DISCO DURO
 
