@@ -1,3 +1,6 @@
+import os
+from reemplazo import reemplazar
+
 class ram():
 
 	def __init__(self):
@@ -9,15 +12,15 @@ class ram():
 		self.nombres_archivos = []
 		self.nombres_archivos.append(None) ## LOS NOMBRES VAN DEL INDICE 1 EN ADELANTE
 		for x in xrange(0,20):
-			self.bloques_memoria.append(0)
+			self.bloques_memoria.append([0, 0])
 
 
 
 	def agregar_archivo(self,cant_bloques, nombre_archivo):
 		## recibo la cantidad de bloques que utilizare de la ram y el archivo que deseo guardar
 		bloques = [] ## variable que guardara cada bloque de 1024 bytes (a excepcion del ultimo)
-		self.nombres_archivos.append(nombres_archivos)
-		cantidad_archivos += 1 
+		self.nombres_archivos.append(nombre_archivo)
+		self.cantidad_archivos += 1 
 
 		posicion_bloques_en_RAM = []
 
@@ -49,10 +52,10 @@ class ram():
 
 
 			for j in range(0,20):
-				if self.bloques_memoria[x][0] == 0 and bloques_copiados < cant_bloques:
-					self.bloques_memoria.insert(x , [indice_archivo, contador_bloques]) #guardo indice, y offset de pedazo de archivo
+				if self.bloques_memoria[j][0] == 0 and bloques_copiados < cant_bloques:
+					self.bloques_memoria.insert(j , [indice_archivo, contador_bloques]) #guardo indice, y offset de pedazo de archivo
 					posicion_bloques_en_RAM.append(i)
-					bloque_abierto_ram = open("ram/"+str(i)+".txt","w") #abro el archivo que quiero
+					bloque_abierto_ram = open("ram/"+str(j)+".txt","w") #abro el archivo que quiero
 
 					bloque_abierto_ram.write(bloques[contador_bloques]) ##escribo el pedazo de archivo que quiero escribir
 
@@ -69,7 +72,7 @@ class ram():
 
 
 		else:
-			for x in xrange(0,20):
+			for x in range(0,20):
 				if self.bloques_memoria[x][0] == 0 and bloques_copiados < cant_bloques:
 					self.bloques_memoria.insert(x , [indice_archivo, contador_bloques]) #guardo indice, y offset de pedazo de archivo
 					posicion_bloques_en_RAM.append(x)
