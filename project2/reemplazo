@@ -1,221 +1,63 @@
-def reemplazar(lista,bloques)
-	
-	ceros = []
-	
+def reemplazar(lista,bloquesFaltantes)
+
 	i = 0
 	
-	dentro = False
+	id = []
+	contadores = []
 	
-	while i<len(lista):
+	while i < len(lista):
 		
-		if not dentro and lista[i][0] == 0:
-		
-			ceros.append(i)
-		
-		if dentro and lista[i][0] != 0:
-		
-			dentro = False
-		
-		i = i +1
-	
-	maxSpace = 0 
-	
-	final = False
-	
-	i = 0
-	
-	while i < len(ceros):
-	
-		if i + 1 < len(ceros):
-			if maxSpace < ceros[i+1]-ceros[i]:
-				maxSpace = i
-		elif len(ceros) % 2 == 1:
-			if maxSpace < len(lista)-1-ceros[i]:
-				maxSpace = i
-				final = True
+		if not lista[i][0] in id:
+			id.append(lista[i][0])
+			contadores.append(0) 
+			
 		i = i + 1
 		
-	space = 0
+	i = 0
 	
-	if len(ceros) == 0:
-		maxSpace = -1
+	while i < len(lista):
 	
-	if final:
-		space = len(lista)-1-ceros[maxSpace]
-	else:
-		space = ceros[maxSpace+1]-ceros[maxSpace]
+		j = 0
 		
-	actualBlock = 0
+		while j < len(id):
+		
+			if lista[i][0] == id[j]:
+			
+				contadores[j] = contadores[j] + 1
+				break
+			j = j + 1
+			
+		i = i + 1
+		
+	min = 801
+	max = -1
 	
 	borrar = []
 	
-	dir = False #False = izq , True = der
-		
-	while space < bloques:
+	space = 0
 	
-		if maxSpace = -1:
-			
-			actualBlock = lista[0][0]
-			borrar.append(lista[0][0])
-			
-			i = 0
-			
-			while True:
-				
-				if lista[i][0] != actualBlock:
-					if space >= bloques:
-						break
-					else:
-						actualBlock = lista[i][0]
-						borrar.append(lista[i][0])
-						
-				space = space +1
-				i = i + 1
+	while space < bloquesFaltantes:
+	
+		i = 0
+		while i < len(contadores):
 		
-		elif ceros[maxSpace]-1 < 0:
-		
-			i = ceros[maxSpace] + 1
+			if contadores[i] < min:
+				min = i
+			if contadores[i] > max:
+				max = i
+			i = i + 1
 			
-			actualBlock = lista[i][0]
-			borrar.append(lista[i][0])
-			
-			while True:
-				
-				if lista[i][0] != actualBlock:
-					if space >= bloques:
-						break
-					else:
-						actualBlock = lista[i][0]
-						borrar.append(lista[i][0])
-				space = space +1
-				i = i + 1
-		
+		if space + contadores[min] < bloquesFaltantes:
+			space = space+ contadores[max]
+			borrar.append(id[max])
+			del contadores[max]
+			del id[max]
 		else:
-		
-			i = ceros[maxSpace]-1
-			
-			actualBlock = lista[i][0]
-			blockIzq = 0
-			blockDer = 0
-			contadorIzq = 0
-			contadorDer = 0
-			lastDer = 0
-			lastIzq = 0
-			cancelDer = False
-			cancelIzq = False
-			
-			actualC = 0
-			enter = False
-			while True:
-			
-				if i >= len(lista) and dir:
-					cancelDer = True
-					enter = True
-				if i < 0 and not dir:
-					cancelIzq = True
-					enter = True
-					
-				if i >= 0 and i < len(lista) or enter:
-					if enter or lista[i][0] != actualBlock:
-						
-						enter = False
-						if dir:
-							blockDer = actualBlock
-							contadorDer = actualC
-							lastDer = i
-							actualC = 0
-							if not cancelIzq:
-								dir = False
-								i = lastIzq
-								actualBlock = lista[i][0]
-							else:
-								actualBlock = lista[i][0]
-						else:
-							blockIzq = actualBlock
-							contadorIzq = actualC
-							lastIzq = i
-							actualC = 0
-							if not cancelDer:
-								dir = True
-								i = lastDer
-								actualBlock = lista[i][0]
-							else:
-								actualBlock = lista[i][0]
-						
-						if contadorDer != 0 && contadorIzq != 0:
-						
-							if space + contadorIzq + contadorDer < bloques:
-							
-								space = space + contadorIzq + contadorDer
-								
-								borrar.append(blockIzq)
-								borrar.append(blockDer)
-								
-								contadorIzq = 0
-								contadorDer = 0
-							
-							elif space + contadorIzq >= bloques and space + contadorDer >= bloques:
-							
-								if contadorIzq < contadorDer:
-									space = space+contadorIzq
-									borrar.append(blockIzq)
-									break
-								else
-									space = space+contadorDer
-									borrar.append(blockDer)
-									break
-									
-							elif space + contadorIzq>=bloques:
-							
-								space = space+contadorIzq
-								borrar.append(blockIzq)
-								break
-								
-							elif space + contadorDer >= bloques:
-							
-								space = space+contadorDer
-								borrar.append(blockDer)
-								break
-							
-							else:
-							
-								space = space + contadorIzq + contadorDer
-								
-								borrar.append(blockIzq)
-								borrar.append(blockDer)
-								
-								break
-							
-
-						
-						elif contadorDer != 0 && cancelIzq:
-							
-							space = space + contadorDer
-							
-							if space >= bloques:
-								
-								borrar.append(blockDer)
-								break
-							contadorIzq = 0
-							contadorDer = 0
-							
-						elif contadorIzq != 0 && cancelDer:
-							
-							space = space + contadorIzq
-							
-							if space >= bloques:
-								borrar.append(blockIzq)
-								break
-								
-							contadorIzq = 0
-							contadorDer = 0
-				if dir:
-					i = i + 1
-				else:
-					i = i - 1
-				actualC = actualC + 1			
-							
-							
-	return borrar					
+			space = space+ contadores[min]
+			borrar.append(id[min])
+			del contadores[min]
+			del id[min]
+	
+	return borrar				
 											
 					
