@@ -45,10 +45,12 @@ class ram():
 			##aca va el metodo donde pido espacios y me devuelve un arreglo con los espacios que debo sacar
 			reemplazados = reemplazar(self.bloques_memoria,cant_bloques-self.espacios_libres)	
 			##obtengo los id de los bloques que reemplazare
+			print reemplazados
 
 			for i in range(0,20):
-				if self.bloques_memoria[i] in reemplazados:
+				if self.bloques_memoria[i][0] in reemplazados:
 					self.bloques_memoria.insert(i ,[0, 0]) #reemplazo por vacio los bloques con indices devueltos
+					print "adentro"
 
 
 			for j in range(0,20):
