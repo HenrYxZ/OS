@@ -194,7 +194,7 @@ class ram():
 							posicion_bloques_en_RAM.append(x)
 							bloque_abierto_ram = open("ram/"+str(x)+".txt","w") #abro el archivo que quiero
 
-							bloque_abierto_ram.write(bloques[contador_bloques]) ##escribo el pedazo de archivo quiero quiero escribir
+							bloque_abierto_ram.write(datos_retornados[contador_bloques]) ##escribo el pedazo de archivo quiero quiero escribir
 							print datos_retornados[contador_bloques] #Imprimo en consola lo que quiero leer
 							bloques_copiados += 1
 							bloque_abierto_ram.close()
