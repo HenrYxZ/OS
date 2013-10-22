@@ -1,8 +1,33 @@
-# Clase Inodo por HenrY
+import os
 
-class Inodo:
+class Inodo():
+	
+	def __init__(self,name_archivo, id):
+		self.estructura = []
+		self.estructura.insert(0,name_archivo)
+		self.estructura.insert(1,os.path.getsize(name_archivo))
+		self.estructura.insert(2,os.path.abspath(name_archivo))
+		self.estructura.insert(3,id)
 
-	def __init__(self, block_size, system):
-		self.block_size = block_size # (512 bytes)
-		self.system = system # (32 bit = 4 bytes)
+		"""
+		Estructura del i nodo
+
+		[0]: nombre nombre del archivo 
+		[1]: tamaño del archivo 
+		[2]: ubicacion
+		[3]: id 
+		[4]: bloque directo
+		[5]: bloque directo
+		[6]: bloque directo
+		[7]: bloque directo
+		[8]: bloque directo
+		[9]: bloque directo
+		[10]: bloque directo
+		[11]: bloque directo
+		[12]: bloque directo
+		[13]: bloque directo
+		"""
+
+
+
 	
