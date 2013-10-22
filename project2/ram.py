@@ -1,5 +1,7 @@
 import os
+import Inodo
 from reemplazo import reemplazar
+from disco import Disco
 
 class ram():
 
@@ -11,8 +13,11 @@ class ram():
 		self.cantidad_archivos = 0
 		self.nombres_archivos = []
 		self.nombres_archivos.append(None) ## LOS NOMBRES VAN DEL INDICE 1 EN ADELANTE
+		self.Inodos = []   
+		self.disc = Disco()
 		for x in xrange(0,20):
 			self.bloques_memoria.append([0, 0])
+	
 
 
 
@@ -36,6 +41,15 @@ class ram():
 		contador_bloques = 0  ## contador que me indica que pedazo de archivo cortado voy copiando
 
 		indice_archivo = self.cantidad_archivos
+		
+		inode = Inodo(nombre_archivo,indice_archivo)
+		##ACA deberia obtener el indice_actual de la clase disco y segun los bloques que necesito
+		## poner las direcciones en posicion actual + cant de bloques
+		posicion_cabezal_directo = self.disc.getPosActual()
+		for k in range(4,4+cant_bloques):
+			inode.estructura.insert(k,posicion_cabezal_directo)
+			posicion_cabezal_directo += 1
+		self.Inodos.append(inode)
 
 
 		bloques_copiados = 0  #cantidad de pedazos del archivo que ya he copiado
